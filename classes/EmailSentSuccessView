@@ -1,0 +1,19 @@
+<?php
+
+class EmailSentSuccessView
+{
+	public function __construct()
+	{
+		
+	}
+	public function render() 
+	{
+		$page = "emailsentsuccess";
+		$page_title = "Thanks for your email!";
+		include "templates/master.inc.php";
+	}
+	public function content()
+	{
+		include "templates/emailsentsuccess.inc.php";
+	}
+}

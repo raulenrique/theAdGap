@@ -1,13 +1,14 @@
 <?php
 
-$page = isset($GET['page']) ? $_GET['page'] : 'home';
+use Mailgun\Mailgun;
+
+$page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {
-	case 'home':
+	case "home":
 		if (isset($_SESSION['feedbackandquestions'])) {
 			$feedbackandquestions = $_SESSION['feedbackandquestions'];
 		} else {
-			$_SESSION['feedbackandquestions'] = NULL;
 			$feedbackandquestions = [
 				'email' => "",
 				'subject' => "",
@@ -28,16 +29,16 @@ switch ($page) {
 		$view->render();
 		break;
 
-	case 'feedbackandquestions':
+	case "feedbackandquestions":
 		$_SESSION['feedbackandquestionserror'] = NULL;
 		$feedbackandquestions = [ 'errors' => []
 								];
 		$expectedVariables = ['email', 'subject', 'message', 'newsletter'];
 
 		foreach ($expectedVariables as $variable) {
+			//assume no errors
 			$feedbackandquestions['errors'][$variable]="";
-		}
-
+		
 		if (isset($_POST[$variable])) {
 			$feedbackandquestions[$variable] = $_POST[$variable];
 		}else {
@@ -66,46 +67,62 @@ switch ($page) {
 			$error = true;
 		}
 
-
 		if( $error === true){
-			$_SESSION['suggestmovieerror'] = true;
-			$_SESSION['moviesuggest'] = $moviesuggest;
-			header("Location:./#moviesuggest");
+			$_SESSION['feedbackandquestions'] = true;
+			$_SESSION['feedbackandquestionserror'] = $feedbackandquestions;
+			header("Location:./#feedbackandquestions");
 			exit();
 		}
-		echo "Successfully suggested a movie.";
+		// form is valid, and so redirect the user to a success page
+		header("Location:./?page=emailsentsuccess");
+
+		// # Instantiate the client.
+		// $mgClient = new Mailgun('key-32d563349310ff041b03b4015120d421');
+		// $domain = "sandbox528ac6793aa4452db9f48a0ed1ceb297.mailgun.org";
+
+		// # Make the call to the client.
+		// $result = $mgClient->sendMessage($domain, array(
+		//     'from'    => 'The AdGap<mailgun@sandbox528ac6793aa4452db9f48a0ed1ceb297.mailgun.org>',
+		//     'to'      => '<'.$feedbackandquestions['email'].'>',
+		//     'subject' => 'Thanks for your feedback / question'.$feedbackandquestions['subject'],
+		//     'text'    => 'Thanks for your feedback / question'.$feedbackandquestions['subject']. '. It willturn up in the website soon!'
+		// ));
 		break;
+		
+		case 'emailsentsuccess':
+			require "classes/EmailSentSuccessView.php";
+			$view = new EmailSentSuccessView();
+			$view->render();
 
+			break;
 
-		break;
-
-	case 'buyAdSpace':
+	case "buyAdSpace":
 		include "templates/buyadspace.inc.php";
 		break;
 
-	case 'SellAdSpace':
+	case "SellAdSpace":
 		include "templates/selladspace.inc.php";
 		break;
 
-	case 'login':
+	case "login":
 		include "templates/login.inc.php";
 		break;
 
-	case 'about':
+	case "about":
 		require "classes/AboutView.php";
 		$view = new AboutView();
 		$view->render();
 		break;
 
-	case 'statistics&press':
+	case "statistics&press":
 		include "templates/stats&press.inc.php";
 		break;
 
-	case 'advertisers':
+	case "advertisers":
 		include "templates/advertisers.inc.php";
 		break;
 
-	case 'publishers':
+	case "publishers":
 		include "templates/publishers.inc.php";
 		break;
 	
