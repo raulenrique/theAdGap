@@ -97,7 +97,7 @@
                 <div class="form-group <?php if($errors['subject']): ?> has-error <?php endif; ?>">
 
                     <label for="messagesubject" >Subject</label>
-                      <input class="form-control" id="messagesubject" name="subject" placeholder="question regarding service , feedback about site usability, media enquiries"
+                      <input class="form-control" id="messagesubject" name="subject" placeholder="question regarding service , feedback about site usability, media enquiries, etc..."
                       value="<?php echo $subject; ?>">
                       <div class="help-block"><?php echo $errors['subject']; ?></div>
                 
@@ -107,7 +107,7 @@
                    
                     <label for="messagecontent" >Message</label>
                     <textarea class="form-control" rows="3" id="messagecontent" name="message" placeholder="Please enter your message here."
-                    value="<?php echo $message; ?>"> </textarea>
+                    value="<?php echo $message; ?>"></textarea>
                     <div class="help-block"><?php echo $errors['message']; ?></div>
                 
                 </div>

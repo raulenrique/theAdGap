@@ -1,18 +1,14 @@
 <?php
 
-class EmailSentSuccessView
+class EmailSentSuccessView extends TemplateView
 {
-	public function __construct()
-	{
-		
-	}
 	public function render() 
 	{
 		$page = "emailsentsuccess";
 		$page_title = "Thanks for your email!";
 		include "templates/master.inc.php";
 	}
-	public function content()
+	protected function content()
 	{
 		include "templates/emailsentsuccess.inc.php";
 	}

@@ -1,7 +1,5 @@
 <?php
 
-use Mailgun\Mailgun;
-
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {
@@ -74,22 +72,23 @@ switch ($page) {
 			exit();
 		}
 		// form is valid, and so redirect the user to a success page
-		header("Location:./?page=emailsentsuccess");
+		// header("Location:./?page=emailsentsuccess");
 
-		// # Instantiate the client.
-		// $mgClient = new Mailgun('key-32d563349310ff041b03b4015120d421');
-		// $domain = "sandbox528ac6793aa4452db9f48a0ed1ceb297.mailgun.org";
+		//send email to the user
+		require "classes/UsersEmailView.php";
+		$usersEmail = new UsersEmailView($feedbackandquestions);
+		$usersEmail->render();
 
-		// # Make the call to the client.
-		// $result = $mgClient->sendMessage($domain, array(
-		//     'from'    => 'The AdGap<mailgun@sandbox528ac6793aa4452db9f48a0ed1ceb297.mailgun.org>',
-		//     'to'      => '<'.$feedbackandquestions['email'].'>',
-		//     'subject' => 'Thanks for your feedback / question'.$feedbackandquestions['subject'],
-		//     'text'    => 'Thanks for your feedback / question'.$feedbackandquestions['subject']. '. It willturn up in the website soon!'
-		// ));
+		//send email to the host
+		require "classes/HostsEmailview.php";
+		$hostsEmail = new HostsEmailview($feedbackandquestions);
+		$hostsEmail->render();
+
+		exit ();
+		
 		break;
 		
-		case 'emailsentsuccess':
+		case "emailsentsuccess":
 			require "classes/EmailSentSuccessView.php";
 			$view = new EmailSentSuccessView();
 			$view->render();

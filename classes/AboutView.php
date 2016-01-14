@@ -1,13 +1,13 @@
 <?php
 
-class AboutView
+class AboutView extends TemplateView
 {
 	public function render() {
 		$page = "about";
 		$page_title = "About Us";
 		include "templates/master.inc.php";
 	}
-	public function content() {
+	protected function content() {
 		include "templates/about.inc.php";
 	}
 }
