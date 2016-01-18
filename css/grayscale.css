@@ -9,7 +9,6 @@ body {
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #fff;
-    background-color: #000;
 }
 
 html {
@@ -158,12 +157,12 @@ a:focus {
 }
 
 
-#statsandpress {
-    background: url(../img/TimesSquare4.jpg) no-repeat bottom center scroll;
+#statsandpress, #technology {
+    background-color: #5bc0de;
 }
 
-#technology {
-    background: url(../img/TimesSquare7.jpg) no-repeat bottom center scroll;
+#about, #users, #contact {
+    background-color: grey;
 }
 
 .intro {
@@ -179,11 +178,6 @@ a:focus {
     background-size: cover;
     -o-background-size: cover;
 
-}
-
-#statsandpress, #technology
-{
-    width: 100%;
 }
 
 .intro .home {
@@ -203,12 +197,11 @@ a:focus {
 }
 
 .section-text {
-     background:rgba(0,0,0,.6);
-     color: white;
+     color: black;
 }
 
 .section-header {
-    color: black;
+    color: white;
 }
 
 @media(min-width:768px) {
@@ -224,13 +217,13 @@ a:focus {
 
     .intro .home .intro-text {
         font-size: 35px;
-    }
+   
 }
 
 
 .btn-circle {
     width: 70px;
-    height: 70px;
+    /*height: 70px;*/
     margin-top: 15px;
     padding: 7px 16px;
     border: 2px solid #fff;
@@ -398,4 +391,8 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
+
+/*section#statsandpress.container.content-section.text-center, section#technology.container.content-section.text-center {
+    background: #5bc0de;
+}*/
 
