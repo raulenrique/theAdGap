@@ -196,13 +196,6 @@ a:focus {
 
 }
 
-.section-text {
-     color: black;
-}
-
-.section-header {
-    color: white;
-}
 
 @media(min-width:768px) {
     .intro {
@@ -392,7 +385,8 @@ body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
 
-/*section#statsandpress.container.content-section.text-center, section#technology.container.content-section.text-center {
+section#statsandpress.container.content-section.text-center, section#technology.container.content-section.text-center {
     background: #5bc0de;
-}*/
+    width: 100%;
+}
 
