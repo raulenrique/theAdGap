@@ -11,6 +11,6 @@ spl_autoload_register('my_autoloader');
 session_start();
 session_regenerate_id(true);
 
-// require 'vendor/autoload.php';
+require 'vendor/autoload.php';
 
 require "routes.php";

@@ -87,8 +87,8 @@
 
                 <div class="form-group <?php if($errors['email']): ?> has-error <?php endif; ?>">
 
-                    <label for="emailaddress" >Email</label>
-                      <input type="email" class="form-control" id="emailaddress" name="email" placeholder="example@mail.com"
+                    <label for="email" >Email</label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="example@mail.com"
                       value="<?php echo $email; ?>">
                       <div class="help-block"><?php echo $errors['email']; ?></div>
 
